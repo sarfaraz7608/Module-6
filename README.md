@@ -29,11 +29,35 @@ To create an **abstract class** named `Shape` with an **abstract method** `calcu
 ---
 
 ## 💻 Program
+```
+from abc import ABC, abstractmethod
+import math
+class Shape(ABC):
+    @abstractmethod
+    def calculate_area(self):
+        pass
+class Rectangle(Shape):
+    def __init__(self, length=5, breadth=3):
+        self.length = length
+        self.breadth = breadth
+    def calculate_area(self):
+        return self.length * self.breadth
+class Circle(Shape):
+    def __init__(self, radius=4):
+        self.radius = radius
+    def calculate_area(self):
+        return math.pi * (self.radius ** 2)
+rect = Rectangle()
+circle = Circle()
+print("Rectangle area:", rect.calculate_area())
+print("Circle area:", circle.calculate_area())
+```
 
 ## Output
+<img width="1920" height="1080" alt="Screenshot 2025-10-19 185340" src="https://github.com/user-attachments/assets/722e7a64-8ea5-4d4d-9445-bbbd55af6178" />
 
 ## Result
-
+Thus To create an **abstract class** named `Shape` with an **abstract method** `calculate_area`, and implement this method in two subclasses: `Rectangle` and `Circle` has been executed sucessfully.
 
 
 # 🐍 Python OOP: Encapsulation with Private Members
@@ -61,11 +85,27 @@ To implement **Encapsulation** in Python by defining a class `Rectangle` with **
 ---
 
 ## 💻 Program
+```
+class Rectangle:
+    def __init__(self, length, breadth):
+        # Private member variables
+        self.__length = length
+        self.__breadth = breadth
 
+    def display(self):
+        # Accessing private variables within the class
+        print(f"Length: {self.__length}")
+        print(f"Breadth: {self.__breadth}")
+
+# Create an object of Rectangle
+rect = Rectangle(10, 5)
+rect.display()
+```
 ## Output
+<img width="1920" height="1080" alt="Screenshot 2025-10-19 185737" src="https://github.com/user-attachments/assets/a499672b-89bc-4ef0-830b-4ccaca39bf19" />
 
 ## Result
-
+Thus To implement **Encapsulation** in Python by defining a class `Rectangle` with **private member variables** `__length` and `__breadth` has been executed sucessfully.
 
 
 # 🐟 Method Overriding-Fish and Shark Class Inheritance in Python
@@ -84,11 +124,30 @@ To write a Python program that demonstrates class inheritance by creating a pare
 7. Output will demonstrate method overriding: printing `"fish"` and `"shark"` accordingly.
 
 ## 💻 PROGRAM:
+```
+# Parent class
+class Fish:
+    def type(self):
+        print("fish")
 
+# Child class inheriting from Fish
+class Shark(Fish):
+    def type(self):
+        print("shark")
+
+# Create instances
+obj_goldfish = Fish()
+obj_hammerhead = Shark()
+
+# Iterate over objects and call type() method
+for obj in (obj_goldfish, obj_hammerhead):
+    obj.type()
+```
 ## OUTPUT
+<img width="1920" height="1080" alt="Screenshot 2025-10-19 190019" src="https://github.com/user-attachments/assets/ce98df25-cf44-4301-8dbc-c8b74f8635bd" />
 
 ## RESULT
-
+Thus To write a Python program that demonstrates class inheritance by creating a parent class `Fish` with a method `type`, and a child class `Shark` that overrides the `type` method has been executed sucessfully.
 
 
 # 🐍 Python OOP: Operator Overloading (Less Than `<`)
@@ -118,11 +177,29 @@ To write a Python program that demonstrates **operator overloading** by overload
 ---
 
 ## 💻 Program
+```
+class A:
+    def __init__(self, a):
+        self.a = a
 
+    def __lt__(self, o):
+        if self.a < o.a:
+            return "ob1 is less than ob2"
+        else:
+            return "ob2 is less than ob1"
+
+# Create objects
+ob1 = A(10)
+ob2 = A(20)
+
+# Use overloaded < operator
+print(ob1 < ob2)
+```
 ## Output
+<img width="1920" height="1080" alt="Screenshot 2025-10-19 190510" src="https://github.com/user-attachments/assets/02b12683-6769-4a8d-be55-171462b9ef00" />
 
 ## Result
-
+Thus To write a Python program that demonstrates **operator overloading** by overloading the **less than (`<`)** operator using a custom class has been executed sucessfully.
 
 
 # # 🐍 Python OOP: Polymorphism with Classes
@@ -153,7 +230,35 @@ To create two specific classes — `Beans` and `Mango`. Then, create a **generic
 ---
 
 ## 💻 Program
+```
+class Beans:
+    def type(self):
+        print("Vegetable")
 
+    def color(self):
+        print("Green")
+
+class Mango:
+    def type(self):
+        print("Fruit")
+
+    def color(self):
+        print("Yellow")
+
+def func(obj):
+    obj.type()
+    obj.color()
+
+# Create objects
+bean = Beans()
+mango = Mango()
+
+# Call func with both objects
+func(bean)
+func(mango)
+```
 ## Output
+<img width="1920" height="1080" alt="Screenshot 2025-10-19 191110" src="https://github.com/user-attachments/assets/d346291b-0f65-4b17-bb62-095c1696400d" />
 
 ## Result
+Thus To create two specific classes — `Beans` and `Mango`. Then, create a **generic function** that can accept any object and determine its **type** (Fruit or Vegetable) and **color**, using polymorphism has been executed sucessfully
